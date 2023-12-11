@@ -39,10 +39,11 @@ namespace LogicCircuits
         }
         private bool AND(bool[] inputs)
         {
-            bool c = true;
-            if (inputs.Contains(false))
-                c = false;
-            return c;
+            //bool c = true;
+            //if (inputs.Contains(false))
+            //    c = false;
+            //return c;
+            return !inputs.Contains(false);
         }
         private bool OR(bool[] inputs)
         {
