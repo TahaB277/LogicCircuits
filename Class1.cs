@@ -60,7 +60,7 @@ namespace LogicCircuits
         }
     }
 
-    // Multiplexer class
+    // Multiplexers class
     // (MSB in selector is the last element in the array !!!!)
     public class MUX 
     {
@@ -201,4 +201,50 @@ namespace LogicCircuits
          
     }
     
+    // DeMultiplexers class
+    public class Demux
+    {
+        public bool Input;
+        public bool[] Outputs;
+        public bool[] Select;
+
+        public Demux(bool Input, bool[] Select)
+        {
+            this.Select = Select;
+            this.Input = Input;
+            Decoders demux = new Decoders(Select, Input);
+            Outputs = demux.Outputs;
+        }
+
+    }
+
+    // Encoders class
+    // (MSB in outputs is the last element in the array !!!!)
+    public class Encoders
+    {
+        public bool[] Outputs;
+        public bool[] Inputs;
+
+        public Encoders(bool[] Inputs)
+        {
+            this.Inputs = Inputs;
+            Outputs = DecToBin(Inputs);
+        }
+        private bool[] DecToBin(bool[] n)
+        {
+            int nb = Array.IndexOf(n, true);
+            bool[] Output = new bool[(int)Math.Ceiling(Math.Log(Inputs.Length,2))];
+
+            int i = ((int)Math.Ceiling(Math.Log(nb, 2))) ;
+            while (nb > 0)
+            {
+                Output[i] = Convert.ToBoolean(nb % 2);
+                nb /= 2;
+                i--;
+            }
+            
+            return Output;
+        }
+    }
+
 }
