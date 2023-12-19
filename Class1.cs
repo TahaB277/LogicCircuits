@@ -242,7 +242,7 @@ namespace LogicCircuits
                 nb /= 2;
                 i--;
             }
-            
+             
             return Output;
         }
     }
