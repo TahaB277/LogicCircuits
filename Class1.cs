@@ -235,14 +235,15 @@ namespace LogicCircuits
             int nb = Array.IndexOf(n, true);
             bool[] Output = new bool[(int)Math.Ceiling(Math.Log(Inputs.Length,2))];
 
-            int i = ((int)Math.Ceiling(Math.Log(nb, 2))) ;
+            int i = Output.Length - 1 ;
             while (nb > 0)
             {
                 Output[i] = Convert.ToBoolean(nb % 2);
                 nb /= 2;
                 i--;
             }
-            
+            Array.Reverse(Output); 
+             //elie was here
             return Output;
         }
     }
